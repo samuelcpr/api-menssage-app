@@ -3,7 +3,8 @@
     "username": "admin",
     "password": "admin",
     "database": "mydatabase",
-    "host": "localhost",
+    "host": "postgres",
+    "port": 5432,
     "dialect": "postgres"
   }
 }
