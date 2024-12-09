@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
@@ -13,6 +13,10 @@
     "ioredis": "^5.4.1",
     "kafka-node": "^5.0.0",
     "pg": "^8.13.1",
-    "redis": "^4.7.0"
+    "pg-hstore": "^2.3.4",
+    "redis": "^4.7.0",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2",
+    "uuid": "^11.0.3"
   }
 }
