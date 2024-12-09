@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.0
@@ -17,7 +18,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: mydatabase
+      POSTGRES_DB: admin
     ports:
       - "5432:5432"
     networks:
@@ -67,18 +68,13 @@ services:
 
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: app
-    depends_on:
-      - redis
-      - kafka
+      context: . # Certifique-se de que o Dockerfile está no mesmo diretório do docker-compose.yml
+    volumes:
+      - .:/usr/src/app # Volume mapeado para garantir que o código da máquina local seja refletido dentro do container
+    working_dir: /usr/src/app
     ports:
       - "3000:3000"
-    env_file:
-      - .env
-    volumes:
-      - ./src:/usr/src/app/src
+    command: yarn start # Substitua se necessário pela configuração do seu aplicativo
     environment:
       KAFKA_HOST: kafka
       KAFKA_PORT: 9092
